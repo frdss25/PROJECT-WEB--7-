@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Motivasi Harian</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+</html>
+<div class="container">
+    <h1>Selamat Datang di Motivasi Harian</h1>
+    <a href="{{ url_for('motivasi_harian') }}" class="button">Dapatkan Motivasi Hari Ini</a>
+    <a href="{{ url_for('tambah_motivasi') }}" class="button">Tambah Motivasi Baru</a>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Motivasi Baru</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tambah Motivasi Baru</h1>
+        
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('tambah_motivasi') }}">
+            <textarea name="motivasi" rows="4" cols="50" placeholder="Tulis motivasi baru Anda di sini..." required></textarea>
+            <br>
+            <input type="submit" value="Simpan Motivasi" class="button">
+        </form>
+        <a href="{{ url_for('index') }}" class="button">Kembali</a>
+    </div>
+</body>
+</html>
