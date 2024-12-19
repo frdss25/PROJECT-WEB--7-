@@ -1,0 +1,27 @@
+<!-- templates/edit_motivasi.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Motivasi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Motivasi</h1>
+        
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('edit_motivasi', motivasi_id=motivasi_id) }}">
+            <textarea name="motivasi" rows="4" cols="50" placeholder="Edit motivasi Anda di sini..." required>{{ motivasi }}</textarea>
+            <br>
+            <input type="submit" value="Simpan Perubahan" class="button">
+        </form>
+        <a href="{{ url_for('daftar_motivasi') }}" class="button">Batal</a>
+    </div>
+</body>
+</html>

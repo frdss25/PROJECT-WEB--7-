@@ -1,0 +1,37 @@
+<!-- templates/daftar_motivasi.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Motivasi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Daftar Semua Motivasi</h1>
+        
+        {% if motivasi_list %}
+            {% for motivasi in motivasi_list %}
+            <div class="motivasi-item">
+                <p>{{ motivasi[1] }}</p>
+                <div class="motivasi-actions">
+                    <span>Likes: {{ motivasi[2] }}</span>
+                    <div>
+                        <a href="{{ url_for('like_motivasi', motivasi_id=motivasi[0]) }}" class="button-small">👍 Like</a>
+                        <a href="{{ url_for('edit_motivasi', motivasi_id=motivasi[0]) }}" class="button-small">✏️ Edit</a>
+                        <a href="{{ url_for('hapus_motivasi', motivasi_id=motivasi[0]) }}" class="button-small" onclick="return confirm('Yakin ingin menghapus motivasi ini?')">🗑️ Hapus</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Belum ada motivasi yang ditambahkan.</p>
+        {% endif %}
+        
+        <div class="nav-buttons">
+            <a href="{{ url_for('tambah_motivasi') }}" class="button">Tambah Motivasi Baru</a>
+            <a href="{{ url_for('index') }}" class="button">Kembali</a>
+        </div>
+    </div>
+</body>
+</html>
