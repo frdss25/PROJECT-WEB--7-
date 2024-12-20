@@ -1,35 +1,42 @@
 <!-- templates/daftar_motivasi.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id"> <!-- Mendefinisikan dokumen sebagai HTML dan bahasa utamanya adalah Indonesia -->
 <head>
-    <meta charset="UTF-8">
-    <title>Daftar Motivasi</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8"> <!-- Menentukan encoding karakter sebagai UTF-8 -->
+    <title>Daftar Motivasi</title> <!-- Menentukan judul halaman yang akan tampil di tab browser -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <!-- Menghubungkan file CSS eksternal untuk mengatur tampilan, menggunakan Flask untuk mendapatkan path -->
 </head>
 <body>
-    <div class="container">
-        <h1>Daftar Semua Motivasi</h1>
-        
+    <div class="container"> <!-- Membuat div utama untuk membungkus semua konten -->
+        <h1>Daftar Semua Motivasi</h1> <!-- Judul halaman utama -->
+
+        <!-- Mengecek apakah motivasi_list berisi data motivasi -->
         {% if motivasi_list %}
+            <!-- Jika ada, iterasi setiap motivasi dalam motivasi_list -->
             {% for motivasi in motivasi_list %}
-            <div class="motivasi-item">
-                <p>{{ motivasi[1] }}</p>
-                <div class="motivasi-actions">
-                    <span>Likes: {{ motivasi[2] }}</span>
+            <div class="motivasi-item"> <!-- Div untuk satu item motivasi -->
+                <p>{{ motivasi[1] }}</p> <!-- Menampilkan teks motivasi (index 1 dari list motivasi) -->
+                <div class="motivasi-actions"> <!-- Div untuk menampilkan aksi terkait motivasi -->
+                    <span>Likes: {{ motivasi[2] }}</span> <!-- Menampilkan jumlah like motivasi (index 2) -->
                     <div>
+                        <!-- Tombol untuk memberikan like -->
                         <a href="{{ url_for('like_motivasi', motivasi_id=motivasi[0]) }}" class="button-small">👍 Like</a>
-                        <a href="{{ url_for('edit_motivasi', motivasi_id=motivasi[0]) }}" class="button-small">✏️ Edit</a>
-                        <a href="{{ url_for('hapus_motivasi', motivasi_id=motivasi[0]) }}" class="button-small" onclick="return confirm('Yakin ingin menghapus motivasi ini?')">🗑️ Hapus</a>
+                        <!-- Tombol untuk mengedit motivasi -->
+                        <a href="{{ url_for('edit_motivasi', motivasi_id=motivasi[0]) }}" class="button-small">✏ Edit</a>
+                        <!-- Tombol untuk menghapus motivasi dengan konfirmasi -->
+                        <a href="{{ url_for('hapus_motivasi', motivasi_id=motivasi[0]) }}" class="button-small" onclick="return confirm('Yakin ingin menghapus motivasi ini?')">🗑 Hapus</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         {% else %}
+            <!-- Jika tidak ada motivasi dalam motivasi_list, tampilkan pesan berikut -->
             <p>Belum ada motivasi yang ditambahkan.</p>
         {% endif %}
         
-        <div class="nav-buttons">
-            <a href="{{ url_for('index') }}" class="button">Kembali</a>
+        <div class="nav-buttons"> <!-- Tombol navigasi -->
+            <a href="{{ url_for('index') }}" class="button">Kembali</a> <!-- Mengarahkan ke halaman utama -->
         </div>
     </div>
 </body>

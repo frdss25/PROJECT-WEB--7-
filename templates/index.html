@@ -1,18 +1,23 @@
 <!-- templates/index.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id"> <!-- Mendefinisikan dokumen HTML dengan bahasa utama Indonesia -->
 <head>
-    <meta charset="UTF-8">
-    <title>Motivasi Harian</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8"> <!-- Menentukan encoding karakter sebagai UTF-8 -->
+    <title>Motivasi Harian</title> <!-- Menentukan judul halaman sebagai "Motivasi Harian" -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <!-- Menghubungkan file CSS eksternal menggunakan Flask untuk mendapatkan path -->
 </head>
 <body>
-    <div class="container">
-        <h1>Selamat Datang di Motivasi Harian</h1>
-        <div class="nav-buttons">
-            <a href="{{ url_for('motivasi_harian') }}" class="button">Dapatkan Motivasi Hari Ini</a>
-            <a href="{{ url_for('tambah_motivasi') }}" class="button">Tambah Motivasi Baru</a>
-            <a href="{{ url_for('daftar_motivasi') }}" class="button">Daftar Motivasi</a>
+    <div class="container"> <!-- Membungkus semua konten halaman dalam div container -->
+        <h1>Selamat Datang di Motivasi Harian</h1> <!-- Judul utama halaman -->
+
+        <div class="nav-buttons"> <!-- Membuat tombol navigasi -->
+            <a href="{{ url_for('motivasi_harian') }}" class="button">Dapatkan Motivasi Hari Ini</a> 
+            <!-- Tombol untuk mendapatkan motivasi harian, mengarah ke endpoint motivasi_harian -->
+            <a href="{{ url_for('tambah_motivasi') }}" class="button">Tambah Motivasi Baru</a> 
+            <!-- Tombol untuk menambahkan motivasi baru, mengarah ke endpoint tambah_motivasi -->
+            <a href="{{ url_for('daftar_motivasi') }}" class="button">Daftar Motivasi</a> 
+            <!-- Tombol untuk melihat daftar motivasi, mengarah ke endpoint daftar_motivasi -->
         </div>
     </div>
 </body>

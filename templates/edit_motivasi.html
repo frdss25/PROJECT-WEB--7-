@@ -1,27 +1,32 @@
 <!-- templates/edit_motivasi.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id"> <!-- Mendefinisikan dokumen HTML dengan bahasa utama Indonesia -->
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Motivasi</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8"> <!-- Menentukan encoding karakter sebagai UTF-8 -->
+    <title>Edit Motivasi</title> <!-- Menentukan judul halaman yang akan tampil di tab browser -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+    <!-- Menghubungkan file CSS eksternal menggunakan Flask untuk mendapatkan path -->
 </head>
 <body>
-    <div class="container">
-        <h1>Edit Motivasi</h1>
-        
-        {% if error %}
-        <div class="error">
-            {{ error }}
+    <div class="container"> <!-- Membungkus semua konten halaman dalam div container -->
+        <h1>Edit Motivasi</h1> <!-- Judul utama halaman -->
+
+        {% if error %} <!-- Mengecek apakah ada pesan error yang dikirim dari backend -->
+        <div class="error"> <!-- Menampilkan pesan error jika ada -->
+            {{ error }} <!-- Menampilkan isi pesan error -->
         </div>
         {% endif %}
         
-        <form method="POST" action="{{ url_for('edit_motivasi', motivasi_id=motivasi_id) }}">
-            <textarea name="motivasi" rows="4" cols="50" placeholder="Edit motivasi Anda di sini..." required>{{ motivasi }}</textarea>
+        <form method="POST" action="{{ url_for('edit_motivasi', motivasi_id=motivasi_id) }}"> 
+            <!-- Form untuk mengedit motivasi, menggunakan metode POST dan mengarah ke endpoint edit -->
+            <textarea name="motivasi" rows="4" cols="50" placeholder="Edit motivasi Anda di sini..." required>{{ motivasi }}</textarea> 
+            <!-- Textarea untuk memasukkan teks motivasi yang akan diedit, nilai awal diambil dari backend -->
             <br>
-            <input type="submit" value="Simpan Perubahan" class="button">
+            <input type="submit" value="Simpan Perubahan" class="button"> <!-- Tombol untuk menyimpan perubahan -->
         </form>
-        <a href="{{ url_for('daftar_motivasi') }}" class="button">Batal</a>
+
+        <a href="{{ url_for('daftar_motivasi') }}" class="button">Batal</a> 
+        <!-- Tombol untuk membatalkan perubahan dan kembali ke halaman daftar motivasi -->
     </div>
 </body>
 </html>
